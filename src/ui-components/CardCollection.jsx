@@ -8,16 +8,23 @@
 import * as React from "react";
 import { Home } from "../models";
 import {
+  createDataStorePredicate,
   getOverrideProps,
   useDataStoreBinding,
 } from "@aws-amplify/ui-react/internal";
+import { SortDirection } from "@aws-amplify/datastore";
 import { Card, Collection } from "@aws-amplify/ui-react";
 export default function CardCollection(props) {
   const { items: itemsProp, overrideItems, overrides, ...rest } = props;
+  const itemsFilterObj = { field: "price", operand: "0", operator: "ne" };
+  const itemsFilter = createDataStorePredicate(itemsFilterObj);
+  const itemsPagination = { sort: (s) => s.id(SortDirection.ASCENDING) };
   const [items, setItems] = React.useState(undefined);
   const itemsDataStore = useDataStoreBinding({
     type: "collection",
     model: Home,
+    criteria: itemsFilter,
+    pagination: itemsPagination,
   }).items;
   React.useEffect(() => {
     if (itemsProp !== undefined) {

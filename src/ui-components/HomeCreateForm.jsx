@@ -39,7 +39,7 @@ export default function HomeCreateForm(props) {
   };
   const validations = {
     address: [],
-    image_url: [],
+    image_url: [{ type: "URL" }],
     price: [],
   };
   const runValidationTasks = async (

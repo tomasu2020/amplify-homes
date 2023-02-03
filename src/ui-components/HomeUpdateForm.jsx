@@ -52,7 +52,7 @@ export default function HomeUpdateForm(props) {
   React.useEffect(resetStateValues, [homeRecord]);
   const validations = {
     address: [],
-    image_url: [],
+    image_url: [{ type: "URL" }],
     price: [],
   };
   const runValidationTasks = async (
