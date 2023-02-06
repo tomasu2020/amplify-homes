@@ -13,21 +13,21 @@ export declare type ValidationResponse = {
 };
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type HomeCreateFormInputValues = {
-    address?: string;
     image_url?: string;
-    price?: number;
+    title?: string;
+    description?: string;
 };
 export declare type HomeCreateFormValidationValues = {
-    address?: ValidationFunction<string>;
     image_url?: ValidationFunction<string>;
-    price?: ValidationFunction<number>;
+    title?: ValidationFunction<string>;
+    description?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type HomeCreateFormOverridesProps = {
     HomeCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-    address?: PrimitiveOverrideProps<TextFieldProps>;
     image_url?: PrimitiveOverrideProps<TextFieldProps>;
-    price?: PrimitiveOverrideProps<TextFieldProps>;
+    title?: PrimitiveOverrideProps<TextFieldProps>;
+    description?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type HomeCreateFormProps = React.PropsWithChildren<{
     overrides?: HomeCreateFormOverridesProps | undefined | null;

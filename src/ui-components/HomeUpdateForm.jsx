@@ -24,21 +24,23 @@ export default function HomeUpdateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    address: "",
     image_url: "",
-    price: "",
+    title: "",
+    description: "",
   };
-  const [address, setAddress] = React.useState(initialValues.address);
   const [image_url, setImage_url] = React.useState(initialValues.image_url);
-  const [price, setPrice] = React.useState(initialValues.price);
+  const [title, setTitle] = React.useState(initialValues.title);
+  const [description, setDescription] = React.useState(
+    initialValues.description
+  );
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = homeRecord
       ? { ...initialValues, ...homeRecord }
       : initialValues;
-    setAddress(cleanValues.address);
     setImage_url(cleanValues.image_url);
-    setPrice(cleanValues.price);
+    setTitle(cleanValues.title);
+    setDescription(cleanValues.description);
     setErrors({});
   };
   const [homeRecord, setHomeRecord] = React.useState(home);
@@ -51,9 +53,9 @@ export default function HomeUpdateForm(props) {
   }, [idProp, home]);
   React.useEffect(resetStateValues, [homeRecord]);
   const validations = {
-    address: [],
     image_url: [{ type: "URL" }],
-    price: [],
+    title: [],
+    description: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -80,9 +82,9 @@ export default function HomeUpdateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          address,
           image_url,
-          price,
+          title,
+          description,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -130,32 +132,6 @@ export default function HomeUpdateForm(props) {
       {...rest}
     >
       <TextField
-        label="Address"
-        isRequired={false}
-        isReadOnly={false}
-        value={address}
-        onChange={(e) => {
-          let { value } = e.target;
-          if (onChange) {
-            const modelFields = {
-              address: value,
-              image_url,
-              price,
-            };
-            const result = onChange(modelFields);
-            value = result?.address ?? value;
-          }
-          if (errors.address?.hasError) {
-            runValidationTasks("address", value);
-          }
-          setAddress(value);
-        }}
-        onBlur={() => runValidationTasks("address", address)}
-        errorMessage={errors.address?.errorMessage}
-        hasError={errors.address?.hasError}
-        {...getOverrideProps(overrides, "address")}
-      ></TextField>
-      <TextField
         label="Image url"
         isRequired={false}
         isReadOnly={false}
@@ -164,9 +140,9 @@ export default function HomeUpdateForm(props) {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              address,
               image_url: value,
-              price,
+              title,
+              description,
             };
             const result = onChange(modelFields);
             value = result?.image_url ?? value;
@@ -182,34 +158,56 @@ export default function HomeUpdateForm(props) {
         {...getOverrideProps(overrides, "image_url")}
       ></TextField>
       <TextField
-        label="Price"
+        label="Title"
         isRequired={false}
         isReadOnly={false}
-        type="number"
-        step="any"
-        value={price}
+        value={title}
         onChange={(e) => {
-          let value = isNaN(parseFloat(e.target.value))
-            ? e.target.value
-            : parseFloat(e.target.value);
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              address,
               image_url,
-              price: value,
+              title: value,
+              description,
             };
             const result = onChange(modelFields);
-            value = result?.price ?? value;
+            value = result?.title ?? value;
           }
-          if (errors.price?.hasError) {
-            runValidationTasks("price", value);
+          if (errors.title?.hasError) {
+            runValidationTasks("title", value);
           }
-          setPrice(value);
+          setTitle(value);
         }}
-        onBlur={() => runValidationTasks("price", price)}
-        errorMessage={errors.price?.errorMessage}
-        hasError={errors.price?.hasError}
-        {...getOverrideProps(overrides, "price")}
+        onBlur={() => runValidationTasks("title", title)}
+        errorMessage={errors.title?.errorMessage}
+        hasError={errors.title?.hasError}
+        {...getOverrideProps(overrides, "title")}
+      ></TextField>
+      <TextField
+        label="Description"
+        isRequired={false}
+        isReadOnly={false}
+        value={description}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              image_url,
+              title,
+              description: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.description ?? value;
+          }
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
+          }
+          setDescription(value);
+        }}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
       ></TextField>
       <Flex
         justifyContent="space-between"

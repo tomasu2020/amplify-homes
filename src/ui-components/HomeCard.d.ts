@@ -11,9 +11,9 @@ import { ImageProps, TextProps, ViewProps } from "@aws-amplify/ui-react";
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type HomeCardOverridesProps = {
     HomeCard?: PrimitiveOverrideProps<ViewProps>;
-    "606103_04 1"?: PrimitiveOverrideProps<ImageProps>;
-    address36462692?: PrimitiveOverrideProps<TextProps>;
-    address36462693?: PrimitiveOverrideProps<TextProps>;
+    image?: PrimitiveOverrideProps<ImageProps>;
+    title?: PrimitiveOverrideProps<TextProps>;
+    description?: PrimitiveOverrideProps<TextProps>;
 } & EscapeHatchProps;
 export declare type HomeCardProps = React.PropsWithChildren<Partial<ViewProps> & {
     home?: Home;

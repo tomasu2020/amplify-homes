@@ -8,18 +8,18 @@ type HomeMetaData = {
 
 type EagerHome = {
   readonly id: string;
-  readonly address?: string | null;
   readonly image_url?: string | null;
-  readonly price?: number | null;
+  readonly title?: string | null;
+  readonly description?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
 type LazyHome = {
   readonly id: string;
-  readonly address?: string | null;
   readonly image_url?: string | null;
-  readonly price?: number | null;
+  readonly title?: string | null;
+  readonly description?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

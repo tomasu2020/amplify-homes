@@ -10,13 +10,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "address": {
-                    "name": "address",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "image_url": {
                     "name": "image_url",
                     "isArray": false,
@@ -24,10 +17,17 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "price": {
-                    "name": "price",
+                "title": {
+                    "name": "title",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "description": {
+                    "name": "description",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -77,5 +77,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "6283f3337aecbb82b467f8c3730f8cb7"
+    "version": "b4fe86fa8085925f74472d71491ab17f"
 };

@@ -12,8 +12,8 @@ export default function HomeCard(props) {
   const { home, overrides, ...rest } = props;
   return (
     <View
-      width="883px"
-      height="755px"
+      width="400px"
+      height="400px"
       display="block"
       gap="unset"
       alignItems="unset"
@@ -27,8 +27,8 @@ export default function HomeCard(props) {
       {...rest}
     >
       <Image
-        width="1280px"
-        height="596px"
+        width="400px"
+        height="186.25px"
         display="block"
         gap="unset"
         alignItems="unset"
@@ -39,11 +39,11 @@ export default function HomeCard(props) {
         padding="0px 0px 0px 0px"
         objectFit="cover"
         src={home?.image_url}
-        {...getOverrideProps(overrides, "606103_04 1")}
+        {...getOverrideProps(overrides, "image")}
       ></Image>
       <Text
         fontFamily="Inter"
-        fontSize="48px"
+        fontSize="24px"
         fontWeight="400"
         color="rgba(0,0,0,1)"
         lineHeight="0px"
@@ -56,16 +56,16 @@ export default function HomeCard(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="616px"
-        left="33px"
+        top="290px"
+        left="17px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={`${"Price -- $"}${home?.price}${" limit"}`}
-        {...getOverrideProps(overrides, "address36462692")}
+        children={home?.title}
+        {...getOverrideProps(overrides, "title")}
       ></Text>
       <Text
         fontFamily="Inter"
-        fontSize="36px"
+        fontSize="18px"
         fontWeight="400"
         color="rgba(0,0,0,1)"
         lineHeight="0px"
@@ -78,12 +78,12 @@ export default function HomeCard(props) {
         gap="unset"
         alignItems="unset"
         position="absolute"
-        top="678px"
-        left="33px"
+        top="330px"
+        left="17px"
         padding="0px 0px 0px 0px"
         whiteSpace="pre-wrap"
-        children={home?.address}
-        {...getOverrideProps(overrides, "address36462693")}
+        children={home?.description}
+        {...getOverrideProps(overrides, "description")}
       ></Text>
     </View>
   );

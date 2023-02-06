@@ -1,10 +1,18 @@
 import './App.css';
-import { HomeCardCollection  } from "./ui-components";
+import { HomeCardCollection, NavBar, MarketingFooter  } from "./ui-components";
 
 function App() {
   return (
     <div className="App">
-      <HomeCardCollection/> 
+      <NavBar/>
+      <div className="collection-view">
+      <HomeCardCollection 
+        overrideItems={({ item, index }) => ({
+          onClick: () => alert(` 詳細：${item.description} `)
+        })}
+      /> 
+      </div>
+      <MarketingFooter/>
     </div>
   );
 }

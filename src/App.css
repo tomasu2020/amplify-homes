@@ -27,3 +27,8 @@
 .App-link {
   color: #61dafb;
 }
+
+.collection-view {
+  background: gray;
+  padding: 20px 50px;
+}
